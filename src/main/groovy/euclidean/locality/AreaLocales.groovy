@@ -1,4 +1,4 @@
-package locality
+package euclidean.locality
 
 import cluster_framework.records.SourceDataInterface
 

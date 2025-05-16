@@ -1,8 +1,8 @@
-package DSLfiles
+package euclidean.DSLfiles
 
 import cluster_framework.parse.Parser
 
-String inFileName = "./exp1"
+String inFileName = "./exp3"
 Parser parser = new Parser(inFileName)
 boolean result = parser.parse()
 if (result) println "parsing OK"

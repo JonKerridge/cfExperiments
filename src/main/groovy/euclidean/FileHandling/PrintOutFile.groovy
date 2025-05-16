@@ -1,6 +1,6 @@
-package FileHandling
+package euclidean.FileHandling
 
-import locality.AreaData
+import euclidean.locality.AreaData
 
 class PrintOutFile {
   static void main(String[] args) {

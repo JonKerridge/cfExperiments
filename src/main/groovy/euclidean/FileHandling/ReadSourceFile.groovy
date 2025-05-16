@@ -1,4 +1,4 @@
-package FileHandling
+package euclidean.FileHandling
 
 class ReadSourceFile {
   static void main(String[] args) {

@@ -1,11 +1,10 @@
-package Sequential
+package euclidean.Sequential
 
 import cluster_framework.records.SourceDataInterface
-import locality.AreaData
-import locality.AreaLocales
-import locality.AreaPoICollect
-import locality.Location
-import locality.PoILocales
+import euclidean.locality.AreaData
+import euclidean.locality.AreaLocales
+import euclidean.locality.AreaPoICollect
+import euclidean.locality.PoILocales
 
 class RunSeq {
   static void main(String[] args) {
@@ -16,11 +15,11 @@ class RunSeq {
     AreaPoICollect areaPoICollect = new AreaPoICollect()
     AreaData baseArea = new AreaData(null)
     AreaData areaData
-    areaData = baseArea.create (sourceData)
+    areaData = baseArea.create (sourceData.getSourceData())
     while (areaData != null) {
       areaData.distance(workData, [gap])
       areaPoICollect.collate(areaData, null)
-      areaData = baseArea.create (sourceData)
+      areaData = baseArea.create (sourceData.getSourceData())
     }
     areaPoICollect.finalise(null)
     long endTime = System.currentTimeMillis()

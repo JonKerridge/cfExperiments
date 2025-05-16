@@ -1,4 +1,4 @@
-package locality
+package euclidean.locality
 
 /**
  * Location is a class that implements a physical point in [x,y] space.

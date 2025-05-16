@@ -1,16 +1,16 @@
-package FileHandling
+package euclidean.FileHandling
 
-import locality.Location
+import euclidean.locality.Location
 
-class CreatePoIFile {
+class CreateAreaFile {
   static void main(String[] args) {
-    int entries = 1000
-    int range = 1000
-    String outFileString = "data/pois1000.loc"
+    int range = 175
+    int entries = 25000
+    String outFileString = "./data/areas25000.loc"
     File objFile = new File(outFileString)
     if ( objFile.exists()) objFile.delete()
     ObjectOutputStream outStream = objFile.newObjectOutputStream()
-    String type = "poi"
+    String type = "area"
     int x, y
     Random ran = new Random()
     for ( i in 1 .. entries){
