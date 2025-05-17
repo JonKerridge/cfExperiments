@@ -47,8 +47,39 @@ The example uses two datafiles.  One is used to provide source data for the 2500
 is used as input to the application.  The second is used to hold the 5000 points and is loaded
 into worker nodes and shared between all the worker processes in that node.
 
-As well as a sequential implementation there are three parallel ones.  The first parallel version 
+As well as a sequential implementation there are three parallel ones (Exp1..3).  The first parallel version 
 provides a direct comparison with the sequential one, in that a single process is used for each
 stage of the parallel architecture.  This will actually run more slowly than the sequential version.
 The second and third parallel applications have 2 and 4 parallel worker processes and show 
 commensurate speedup.
+
+Exp4 shows how a pipeline of work clusters can be created using 2 work clusters.  In this example
+he second work cluster just repeats the work in the first cluster using a different parameter
+value.  In reality the second work cluster would do a further operation on the data.  Please note that
+a List of classes is passed, one for each work cluster, indicating the type of the data file to be loaded. 
+If a work cluster does not require a data file then the value *null* should be used.  There should be as 
+many entries in the List as there are work clusters.
+
+### Real Network Operation
+
+The simplest way of running an application on a real network is to create two jar files; one for the
+host node and the other that can be used on all the other nodes. Examples of such codes are available.
+
+The net node example is contained in the package *invokeNodes*, called NetNode. It can be used for 
+any application as the node code is application independent.  The NetNode code MUST be executed only after 
+the host node has started.  The host node will display the IP-address it is using to enable NetNode 
+to pass that address as its single parameter.
+
+The net host example is contained in the package *euclidean.invoke*.  This can be used as a model
+for any other application.
+
+The software was developed using the Intellij IDE and the build contains the required creation of the jar artifacts.
+The jars once created can then be invoked from the command line using the usual java command.  The location of
+any required data files will need to be included in the.clic file and is made easier if a globally accessible
+file store is available.  If not the .clic file can contain the IP-address to which a cluster is allocated
+so that any data files can be stored at that node.  Simply add the required IP-address(es) to the cluster definition
+and the framework will ensure the node(s) will be allocated to the specified node(s).  Obviously, the specifically allocated
+nodes will have to be ones that run the NetNode code.  The host node will check to enaure the required nodes are in the set
+of nodes allocated to the application at run time.
+
+The required jars will be found in the *./out/artifacts/* folder in the project.
