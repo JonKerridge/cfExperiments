@@ -7,6 +7,7 @@ package euclidean.locality
 class Location implements Serializable{
   String type
   int id, x, y
+  Double crowDistance, furtherDistance
 
   /**
    * The Location constructor
@@ -23,6 +24,8 @@ class Location implements Serializable{
     this.id = id
     this.x = x
     this.y = y
+    crowDistance = null
+    furtherDistance = null
   }
 /**
  * Calculates the Euclidean Distance between this point and another point
@@ -55,7 +58,7 @@ class Location implements Serializable{
   }
 
   String toString(){
-    return "$type-$id: [$x, $y]"
+    return "$type-$id: [$x, $y], {$crowDistance, $furtherDistance}"
   }
 
 }

@@ -44,7 +44,10 @@ class AreaData implements EmitInterface<AreaData>{
     for ( i in 0 ..< dataMax){
       Location poi = (workData as PoILocales).getNextWorkData(i)
       double distance = areaLocation.euclideanDistance(poi)
-      if (distance <= testDistance) nearPoIs << poi
+      if (distance <= testDistance) {
+        poi.crowDistance = distance
+        nearPoIs << poi
+      }
     }
   } // distance
 
@@ -58,12 +61,16 @@ class AreaData implements EmitInterface<AreaData>{
    * be appended to the List adjacentPoIs
    */
   void adjacent(WorkDataInterface<Location> workData, List p){
-    double testDistance = p[0]
+    double minDistance = p[0]
+    double maxDistance = p[1]
     int dataMax = workData.getWorkDataSize()
     for ( i in 0 ..< dataMax){
       Location poi = workData.getNextWorkData(i)
       double distance = areaLocation.euclideanDistance(poi)
-      if (distance <= testDistance) adjacentPoI << poi
+      if ((distance > minDistance) && (distance <= maxDistance)) {
+        poi.furtherDistance = distance
+        adjacentPoI << poi
+      }
     }
   } // distance
 
@@ -73,11 +80,11 @@ class AreaData implements EmitInterface<AreaData>{
    * @return string representing this object
    */
   String toString(){
-    String s = "${areaLocation} :: "
+    String s = "${areaLocation} \n  near  "
     nearPoIs.each {loc ->
       s = s + "${loc}, "
     }
-    s = s + " == "
+    s = s + " \n further  "
     adjacentPoI.each {Location loc ->
       s = s + "${loc}, "
     }

@@ -45,13 +45,13 @@ class AreaPoICollect implements CollectInterface<AreaData> {
     int current
     current = 0
     println "\n"
-    allAreas.each {ad ->
-      print "${ad.areaLocation} :: "
-      ad.nearPoIs.each {loc ->
-        print "$loc; "
-      }
-      println " "
-    }
+//    allAreas.each {ad ->
+//      print "${ad.areaLocation} :: "
+//      ad.nearPoIs.each {loc ->
+//        print "$loc; "
+//      }
+//      println " "
+//    }
     def uniquePoIs = accessedPoIs.toUnique { a, b -> a.id <=> b.id}
     def sortedPoIs = uniquePoIs.toSorted{a,b -> a.id <=> b.id}
 
