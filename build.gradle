@@ -10,6 +10,12 @@ version '1.0.0'
 String userDir = System.getProperty("user.home")
 String propertyFileName = "$userDir/.github/gradle.properties"
 File propsFile = new File(propertyFileName)
+if (!propsFile.exists())
+  println "$propertyFileName not found\n" +
+      "file contains a github Personal Access Token\n" +
+      "to be able to access Github packages"
+else
+  println "$propertyFileName found"
 Properties props = new Properties()
 props.load(propsFile.newDataInputStream())
 
@@ -32,7 +38,7 @@ repositories {
       password = props.getProperty("gpr.key")
     }
   }
-  maven { // to download the cli_cluster_library library
+  maven { // to download the cluster_framework library
     name = "GitHubPackages"
     url = "https://maven.pkg.github.com/JonKerridge/clusterFramework"
     credentials {
@@ -44,7 +50,7 @@ repositories {
 
 dependencies {
   implementation 'org.codehaus.groovy:groovy-all:3.0.24'
-  implementation 'cspforjava:jcsp:1.1.9'
+  implementation 'cspforjava:jcsp:1.1.10'
   implementation 'jonkerridge:groovy_jcsp:1.1.10'
   implementation 'jonkerridge:cluster_framework:2.0.3'
 
