@@ -12,7 +12,7 @@ String propertyFileName = "$userDir/.github/gradle.properties"
 File propsFile = new File(propertyFileName)
 if (!propsFile.exists())
   println "$propertyFileName not found\n" +
-      "file contains a github Personal Access Token\n" +
+      "file MUST contain a github Personal Access Token\n" +
       "to be able to access Github packages"
 else
   println "$propertyFileName found"
