@@ -46,6 +46,8 @@ class AreaData implements EmitInterface<AreaData>{
       double distance = areaLocation.euclideanDistance(poi)
       if (distance <= testDistance) {
         poi.crowDistance = distance
+        areaLocation.crowDistance = distance  // might be overwritten several times
+        // but will be not null if there is a close poi
         nearPoIs << poi
       }
     }

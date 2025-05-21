@@ -14,6 +14,7 @@ class AreaPoICollect implements CollectInterface<AreaData> {
   AreaPoICollect(){
     allAreas = []
     accessedPoIs = []
+
   }
 
   /**
@@ -40,28 +41,28 @@ class AreaPoICollect implements CollectInterface<AreaData> {
    */
   @Override
   void finalise(List params) {
-    List <Integer> poisNotUsed
-    poisNotUsed = []
-    int current
-    current = 0
-    println "\n"
-//    allAreas.each {ad ->
-//      print "${ad.areaLocation} :: "
-//      ad.nearPoIs.each {loc ->
-//        print "$loc; "
-//      }
-//      println " "
-//    }
+    List <Integer> unusedPoI
+    List <Integer> areasWithNoPoI
+    unusedPoI = []
+    areasWithNoPoI = []
+    // find any areas that have no close PoI
+    allAreas.each { ad ->
+      if (ad.areaLocation.crowDistance == null)
+        areasWithNoPoI << ad.areaLocation.id
+    }
+    // find PoIs that have not been accessed
     def uniquePoIs = accessedPoIs.toUnique { a, b -> a.id <=> b.id}
     def sortedPoIs = uniquePoIs.toSorted{a,b -> a.id <=> b.id}
-
+    int current
+    current = 0
     while ( current < (sortedPoIs.size()-1)){
       if ( (sortedPoIs[current].id + 1) != sortedPoIs[current+1].id)
-        poisNotUsed << sortedPoIs[current+1].id
+        unusedPoI << sortedPoIs[current+1].id
       current = current + 1
     }
-
-    println "PoIs not accessed = $poisNotUsed "
+    println "\n"
+    println "Areas with no close PoI = $areasWithNoPoI"
+    println "PoIs not accessed = $unusedPoI "
   }
 }
 
