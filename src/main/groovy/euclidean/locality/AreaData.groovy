@@ -42,7 +42,8 @@ class AreaData implements EmitInterface<AreaData>{
     double testDistance = p[0]
     int dataMax = (workData as PoILocales).getWorkDataSize()
     for ( i in 0 ..< dataMax){
-      Location poi = (workData as PoILocales).getNextWorkData(i)
+      List wd = (workData as PoILocales).getFilteredWorkData(i, null)
+      Location poi = wd[1] as Location
       double distance = areaLocation.euclideanDistance(poi)
       if (distance <= testDistance) {
         poi.crowDistance = distance
@@ -67,7 +68,8 @@ class AreaData implements EmitInterface<AreaData>{
     double maxDistance = p[1]
     int dataMax = workData.getWorkDataSize()
     for ( i in 0 ..< dataMax){
-      Location poi = workData.getNextWorkData(i)
+      List wd = (workData as PoILocales).getFilteredWorkData(i, null)
+      Location poi = wd[1] as Location
       double distance = areaLocation.euclideanDistance(poi)
       if ((distance > minDistance) && (distance <= maxDistance)) {
         poi.furtherDistance = distance

@@ -21,7 +21,7 @@ props.load(propsFile.newDataInputStream())
 
 repositories {
   mavenCentral()
-//  mavenLocal()
+  mavenLocal()
   maven { // to download the jonkerridge.groovy_jcsp library
     name = "GitHubPackages"
     url = "https://maven.pkg.github.com/JonKerridge/groovyJCSP"
@@ -38,21 +38,21 @@ repositories {
       password = props.getProperty("gpr.key")
     }
   }
-  maven { // to download the cluster_framework library
-    name = "GitHubPackages"
-    url = "https://maven.pkg.github.com/JonKerridge/clusterFramework"
-    credentials {
-      username = props.getProperty("gpr.user")
-      password = props.getProperty("gpr.key")
-    }
-  }
+//  maven { // to download the cluster_framework library
+//    name = "GitHubPackages"
+//    url = "https://maven.pkg.github.com/JonKerridge/clusterFramework"
+//    credentials {
+//      username = props.getProperty("gpr.user")
+//      password = props.getProperty("gpr.key")
+//    }
+//  }
 }
 
 dependencies {
   implementation 'org.codehaus.groovy:groovy-all:3.0.24'
   implementation 'cspforjava:jcsp:1.1.10'
   implementation 'jonkerridge:groovy_jcsp:1.1.10'
-  implementation 'jonkerridge:cluster_framework:2.0.3'
+  implementation 'jonkerridge:cluster_framework:2.0.4'
 
 }
 

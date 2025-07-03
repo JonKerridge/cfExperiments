@@ -32,12 +32,13 @@ class PoILocales implements WorkDataInterface<Location> {
    * Gets the next data item from the List pois
    *
    * @param index assumed to be a valid subscript in pois
-   * @return the Location at the given subscript
+   * @param p a list of filter values, not needed in this case
+   * @return a list comprising  [index+1, value at location index]
    */
   @Override
-  Location getNextWorkData(int index) {
+  List getFilteredWorkData(int index, List p) {
     // assume index is valid!!
-    return pois[index]
+    return [index+1, pois[index]]
   }
 
   /**

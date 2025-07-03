@@ -14,8 +14,6 @@ class MandelbrotCollect implements CollectInterface <MandelbrotData> {
     totalIterations = 0
   }
 
-  MandelbrotCollect () {}
-
   @Override
   void finalise( List d){
     println "Points = $points, whites = $whiteCount, blacks = $blackCount, iterations = $totalIterations "

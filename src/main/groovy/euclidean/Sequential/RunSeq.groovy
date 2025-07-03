@@ -12,7 +12,7 @@ class RunSeq {
     double gap = 3.0
     AreaLocales sourceData = new AreaLocales("./data/areas25000.loc")
     PoILocales workData = new PoILocales("./data/pois5000.loc")
-    AreaPoICollect areaPoICollect = new AreaPoICollect()
+    AreaPoICollect areaPoICollect = new AreaPoICollect(["./data/SeqResults"])
     AreaData baseArea = new AreaData(null)
     AreaData areaData
     areaData = baseArea.create (sourceData.getSourceData())
