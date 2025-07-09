@@ -1,4 +1,4 @@
-package invokeNodes
+package Mandelbrot.invoke
 
 import cluster_framework.run.NodeRun
 
@@ -18,10 +18,9 @@ import cluster_framework.run.NodeRun
  *
  */
 
-class NetNode {
-  static void main(String[] args) {
-    // args[0] contains the IP address of the host node
-    new NodeRun(args[0]).invoke()
-  }
-
+class MandelbrotNode {
+    static void main(String[] args) {
+        // args[0] contains the IP address of the host node
+        new NodeRun(args[0]).invoke()
+    }
 }
