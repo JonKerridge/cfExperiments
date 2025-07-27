@@ -21,6 +21,7 @@ class AreaData implements EmitInterface<AreaData>{
     this.nearPoIs = []
     adjacentPoI = []
   } // areaData
+
   @Override
   AreaData create(Object loc) {
     if (loc == null)

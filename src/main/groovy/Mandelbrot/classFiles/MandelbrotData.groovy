@@ -55,7 +55,7 @@ class MandelbrotData implements  EmitInterface<MandelbrotData>{
     return md
   }
 
-// based on algorithm at
+// based on algorithm at https://en.wikipedia.org/wiki/Mandelbrot_set
  void calculateColour (Object wd, List p) {
     int width = colour.size()
 //    println "Calc : $ly"
